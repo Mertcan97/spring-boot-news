@@ -1,7 +1,8 @@
 package com.sha.dernek.controller;
 
-import com.sha.dernek.model.News;
-import com.sha.dernek.service.INewsService;
+import com.sha.dernek.model.Activities;
+import com.sha.dernek.model.Announcement;
+import com.sha.dernek.service.IActivitiesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,24 +14,24 @@ import org.springframework.web.bind.annotation.*;
 public class NewsController
 {
     @Autowired
-    private INewsService newsService;
+    private IActivitiesService newsService;
 
     @PostMapping
-    public ResponseEntity<?> saveNews(@RequestBody News news)
+    public ResponseEntity<?> saveNews(@RequestBody Activities activities)
     {
-        return new ResponseEntity<>(newsService.saveNews(news), HttpStatus.CREATED);
+        return new ResponseEntity<>(newsService.saveActivities(activities), HttpStatus.CREATED);
     }
 
     @DeleteMapping("{newsId}")
     public ResponseEntity<?> deleteNews(@PathVariable Long newsId)
     {
-        newsService.deleteNews(newsId);
+        newsService.deleteActivities(newsId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping
     public ResponseEntity<?> getAllNews()
     {
-        return new ResponseEntity<>(newsService.findAllNews(), HttpStatus.OK);
+        return new ResponseEntity<>(newsService.findAllActivities(), HttpStatus.OK);
     }
 }
