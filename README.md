@@ -1,4 +1,4 @@
-# Association Management API with Spring Boot
+# Association Management System API with SpringBoot
 
 ## Introduction
 
